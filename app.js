@@ -29,7 +29,8 @@ app.get("/auth/callback", client.authorizeCallback, function (req, res) {
 
 app.get("/", client.secured, function (req, res, next) {
     var accessToken = req.session.access_token;
-console.log(accessToken);
+    console.log("TOKEN: ")
+    console.log(accessToken);
     request.get('https://id.sandbox.sparebank1.no/api/v1/me')
         .set('Authorization', 'Bearer ' + accessToken)
         .end(function (err, result) {
@@ -38,7 +39,31 @@ console.log(accessToken);
             }
             res.send(result);
         });
+    console.log("Prøver å hente noe shit:")
+
+    request.get('https://api.sandbox.sparebank1.no/api/v1/transactions/').
+      set('Authorization', 'Bearer ' + accessToken)
+      .end(function (err, result, body) {
+          if (err) {
+              return next(err);
+          }
+          log = JSON.parse(result.text)
+          var stats = {}
+          for (var i = 0; i < log.transactions.length; i++) {
+            log.transactions[i].description = log.transactions[i].description.toLowerCase()
+            if (log.transactions[i].description in stats){
+              stats[log.transactions[i].description] += 1
+            } else {
+              stats[log.transactions[i].description] = 1
+            }
+          }
+          console.log(stats)
+      });
 })
+
+app.get("/test", function(req, res) {
+  res.send("Hello<br> World")
+});
 
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
