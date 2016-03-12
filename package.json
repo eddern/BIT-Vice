@@ -1,0 +1,18 @@
+{
+  "name": "node-api-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "app": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "api-poc-client": "git+https://github.com/SpareBank1/api-poc-client-lib.git",
+    "cookie-session": "^2.0.0-alpha.1",
+    "express": "^4.13.4",
+    "superagent": "^1.8.0"
+  }
+}
