@@ -13,6 +13,7 @@ var client = new ApiClient({
     redirectUri: "http://localhost:3560/auth/callback",
     debugLog: console.log
 });
+app.set('view engine', 'jade');
 app.use(session({
     name: 'session-example-client',
     secret: 'little-elephant-crossing-borders'
@@ -62,7 +63,7 @@ app.get("/", client.secured, function (req, res, next) {
 })
 
 app.get("/test", function(req, res) {
-  res.send("Hello<br> World")
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
 
 app.use(function (err, req, res, next) {

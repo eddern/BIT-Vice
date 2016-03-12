@@ -13,6 +13,7 @@
     "api-poc-client": "git+https://github.com/SpareBank1/api-poc-client-lib.git",
     "cookie-session": "^2.0.0-alpha.1",
     "express": "^4.13.4",
+    "jade": "^1.11.0",
     "superagent": "^1.8.0"
   }
 }
