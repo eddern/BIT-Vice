@@ -77,6 +77,11 @@ function createDateSeries(log) {
       sums[i] += parseInt(log.transactions[j].amount)
       j--;
     }
+    sums[i] = Math.round(sums[i]/100)
+  }
+
+  for (var i = 0; i < dates.length; i++) {
+    dates[i] = dates[i].getDate()+"/"+dates[i].getMonth()+1+"/"+dates[i].getFullYear();
   }
   var chartData = {
     labels: dates,

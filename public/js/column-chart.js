@@ -4,7 +4,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: 'Column chart'
+            text: 'Monthly Spending'
         },
         xAxis: {
             categories: []
@@ -12,7 +12,7 @@ $(function () {
         yAxis: {
             min: 0,
             title: {
-                text: 'Dough'
+                text: 'Dough (NOK)'
             },
             stackLabels: {
                 enabled: true,
