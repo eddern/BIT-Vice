@@ -101,8 +101,21 @@ function simpleCompareDate(d1, d2) {
   }
 }
 
+var varer = ["Harry Potter Samleboks (8 DVDs)", "Lamborghini Aventador", "Oppvaskbørste", "Kilo smågodt på Rema 1000", "Leverpostei", "Måneder WoW subscription"];
+var bilder = ["http://dizw242ufxqut.cloudfront.net/images/product/movie/dvd/image0/harry_potter_samleboks_1_-_7_del_2_8_disc-15163013-frntl.jpg","https://finncdn.no/dynamic/1600w/2016/2/vertical-3/12/3/598/589/33_1034132342.jpg","https://www.norengros.no/norengros/frontend/mediabank/5/5790/6192V42373_l.jpg","http://www.vandergeeten.no/wp-content/uploads/2013/09/Smagodt1-700x400.jpg","http://www.matbox.no/images/605097.jpg","http://spifo.no/files/2015/06/WoW-logo-big.jpg"]
+var priser = [249, 4790000, 19, 29, 14, 120];
+var netWorth = 3100;
+var cardtext = ""
+var tall = Math.floor((Math.random() * 6) + 1)-1
+
+function velgVare (){
+    var antall = (netWorth/priser[tall]).toFixed(2);
+    cardtext =  "Sparer du 100 kroner hver dag, kan du kjøpe " + antall + " stk " + varer[tall] + " etter en måned.";
+}
+
 app.get("/test", function(req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
+  velgVare();
+  res.render('index', { title: 'Raindough', message: 'Hello there!', imgsource: bilder[tall], imgtext: cardtext});
 });
 
 app.use(function (err, req, res, next) {

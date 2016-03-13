@@ -21,7 +21,6 @@ $(function () {
                     color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
                 }
             }
-
         },
         legend: {
             enabled: false,
@@ -45,7 +44,7 @@ $(function () {
         },
         series: [{
             name: 'Dough',
-            data: [5, 3, 4, 7, 2]
+            data: []
         }]
     });
 
@@ -59,10 +58,18 @@ $(function () {
       chart.xAxis[0].setCategories(data['labels'])
       chart.series[0].setData(data['values'])
       chart.yAxis[0].addPlotLine({
-        color: 'red',
+        color: 'orange',
         value: total/data.values.length, // Insert your average here
         width: '1',
         zIndex: 2 // To not get stuck below the regular plot lines
+      });
+      var average = total/data.values.length
+      $.each(chart.series[0].data,function(i,data){
+        if(data.y <= average){
+          data.update({
+            color: '#4caf50'
+          });
+        }
       });
     });
 });

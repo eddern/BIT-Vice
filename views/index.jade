@@ -1,5 +1,6 @@
 html
   head
+    meta(charset="utf-8")
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css', rel='stylesheet')
     link(href='css/style.css', rel='stylesheet')
     link(href='img/favicon.png', rel='shortcut icon')
@@ -13,6 +14,13 @@ html
     nav
       div.nav-wrapper.deep-purple
         img(src="img/text-logo.png")#logo
-
-
+    br
     div#container
+
+    div.row
+      div.col.s4.offset-s4
+        div#funfacts.card
+          div.card-image
+            img(src=imgsource)
+          div.card-content.deep-purple.lighten-3
+            p #{imgtext}
