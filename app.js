@@ -74,14 +74,17 @@ function createDateSeries(log) {
   var j = log.transactions.length-1;
   for (var i = dates.length-1; i >= 0; i--) {
     while (simpleCompareDate(new Date(log.transactions[j].createDate), dates[i])){
-      sums[i] += parseInt(log.transactions[j].amount)
+      if(!log.transactions[j].incoming){
+        sums[i] += parseInt(log.transactions[j].amount)
+      }
       j--;
     }
     sums[i] = Math.round(sums[i]/100)
   }
 
   for (var i = 0; i < dates.length; i++) {
-    dates[i] = dates[i].getDate()+"/"+dates[i].getMonth()+1+"/"+dates[i].getFullYear();
+    month = dates[i].getMonth()+1
+    dates[i] = dates[i].getDate()+"/"+month+"/"+dates[i].getFullYear();
   }
   var chartData = {
     labels: dates,
