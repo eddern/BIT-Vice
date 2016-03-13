@@ -18,6 +18,7 @@ app.use(session({
     name: 'session-example-client',
     secret: 'little-elephant-crossing-borders'
 }));
+app.use(express.static('public'));
 
 // AUTH
 
@@ -38,7 +39,7 @@ app.get("/", client.secured, function (req, res, next) {
             if (err) {
                 return next(err);
             }
-            res.send(result);
+            //res.send(result);
         });
     console.log("Prøver å hente noe shit:")
 
@@ -55,7 +56,7 @@ app.get("/", client.secured, function (req, res, next) {
             return new Date(a.createDate.substring(0, 10)) - new Date(b.createDate.substring(0, 10));
           });
 
-          console.log(createDateSeries(log));
+          res.send(createDateSeries(log));
 
 
       });
@@ -66,7 +67,7 @@ function createDateSeries(log) {
   var startDate = new Date("2016-12-31")
   var dates = []
   var sums = []
-  for (var i = 0; i < 30; i++) {
+  for (var i = 0; i < 31; i++) {
     dates.unshift(new Date(startDate - i*86400000))
     sums.push(0)
   }

@@ -1,10 +1,18 @@
 html
   head
     link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css', rel='stylesheet')
+    link(href='css/style.css', rel='stylesheet')
+    link(href='img/favicon.png', rel='shortcut icon')
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js")
     script(src="https://code.highcharts.com/highcharts.js")
     script(src="https://code.highcharts.com/modules/exporting.js")
+    script(src="js/column-chart.js")
     title= title
   body
-    h1= message
+    nav
+      div.nav-wrapper.deep-purple
+        img(src="img/text-logo.png")#logo
+
+
+    div#container
