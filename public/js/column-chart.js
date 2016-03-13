@@ -21,6 +21,7 @@ $(function () {
                     color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
                 }
             }
+
         },
         legend: {
             enabled: false,
@@ -50,7 +51,18 @@ $(function () {
 
     $.get("/",function(data,status){
       var chart = $("#container").highcharts();
+      var total = 0;
+      for (var i = 0; i < data.values.length; i++) {
+        total += data.values[i]
+      }
+
       chart.xAxis[0].setCategories(data['labels'])
       chart.series[0].setData(data['values'])
+      chart.yAxis[0].addPlotLine({
+        color: 'red',
+        value: total/data.values.length, // Insert your average here
+        width: '1',
+        zIndex: 2 // To not get stuck below the regular plot lines
+      });
     });
 });
